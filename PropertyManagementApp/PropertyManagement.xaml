@@ -5,8 +5,91 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PropertyManagementApp"
         mc:Ignorable="d"
-        Title="PropertyManagement" Height="450" Width="800">
+        Title="PropertyManagement" Height="450" Width="800" Loaded="Window_Loaded">
     <Grid>
-        
+
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="_Fichier">
+                <MenuItem Header="_Quitter" x:Name="Quitter" />
+            </MenuItem>
+            <MenuItem Header="_Ajouter">
+                <MenuItem Header="É_tudiant" x:Name="AjoutEtudiant"  />
+            </MenuItem>
+        </Menu>
+
+        <Label Content="List of the properties" Margin="154,15,242,0" VerticalAlignment="Top" Width="248" Height="25"/>
+        <ComboBox x:Name="cboPropertyList" IsSynchronizedWithCurrentItem="True" HorizontalAlignment="Left" Margin="154,37,0,0" 
+                  VerticalAlignment="Top" Width="248" Height="22" ItemsSource="{Binding}" DisplayMemberPath="Name" 
+                  SelectionChanged="cboPropertyList_SelectionChanged" ></ComboBox>
+
+        <TabControl HorizontalAlignment="Left" Margin="100,75,0,15" Width="450">
+            <TabItem Header="Property">
+                <Grid Height="230">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5"/>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="125"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="5"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="15"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="5"/>
+                    </Grid.RowDefinitions>
+                    <Label Content="ID :" Grid.Column="1" Grid.Row="4" HorizontalAlignment="Right" FontSize="11"/>
+                    <TextBox x:Name="txtID" Grid.Column="2" Grid.Row="4" Margin="0,2,0,0" FontSize="11" BorderBrush="Gray"/>
+
+                    <Label Content="Name :" Grid.Column="1" Grid.Row="5" HorizontalAlignment="Right" FontSize="11"/>
+                    <TextBox x:Name="txtName" Grid.Column="2" Grid.Row="5" Margin="0,2,0,0" FontSize="11" BorderBrush="Gray"/>
+
+                    <Label Content="Adress :" Grid.Column="1" Grid.Row="6" HorizontalAlignment="Right" FontSize="11"/>
+                    <TextBox x:Name="txtAdress" Grid.Column="2" Grid.Row="6" Margin="0,2,0,0" FontSize="11" BorderBrush="Gray"/>
+
+                    <Label Content="Price :" Grid.Column="1" Grid.Row="7" HorizontalAlignment="Right" FontSize="11"/>
+                    <TextBox x:Name="txtPrice" Grid.Column="2" Grid.Row="7" Margin="0,2,0,0" FontSize="11" BorderBrush="Gray"/>
+
+                    <Button x:Name="btnAdd" Content="_Add" Grid.Column="1" Grid.Row="11"  Margin="0,6,0,-22"  />
+                    <Button x:Name="btnDelete" Content="_Delete" Grid.Column="2" Grid.Row="11" Grid.ColumnSpan="1" Margin="23,6,2,-22"  />
+                    <Button x:Name="btnChange" Content="_Change" Grid.Column="3" Grid.Row="11" Grid.ColumnSpan="1" Margin="20,6,88,-22"  />
+
+                    <GroupBox Header="Status" Grid.Column="3" Grid.Row="3" Grid.RowSpan="4" Margin="10,0,50,0">
+                        <StackPanel Orientation="Vertical" Grid.ColumnSpan="2">
+                            <RadioButton x:Name="rbSold" Margin="5" FontSize="11">Sold</RadioButton>
+                            <RadioButton x:Name="rbSale" Margin="5" FontSize="11">For Sale</RadioButton>
+                            <RadioButton x:Name="rbRent" Margin="5" FontSize="11">For Rent</RadioButton>
+                        </StackPanel>
+                    </GroupBox>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Cours">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="5"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="5"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="5"/>
+                    </Grid.RowDefinitions>
+                    <Label x:Name="lblCours" Grid.Row="1" Grid.Column="1" Height="auto" Margin="15,5,15,5"/>
+                    <DataGrid x:Name="lstCours" Grid.Row="2" Grid.Column="1" Margin="5" ScrollViewer.CanContentScroll="True" 
+                              ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto" Height="190"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+
     </Grid>
 </Window>

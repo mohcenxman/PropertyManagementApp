@@ -22,6 +22,7 @@ namespace PropertyManagementApp
     public partial class MainWindow : Window
     {
         PropertyManagementEntities manage;
+        Agent loggedAgent;
         bool open = false;
         public MainWindow()
         {
@@ -30,22 +31,21 @@ namespace PropertyManagementApp
 
         private void btnOk_Click(object sender, RoutedEventArgs e)
         {
-            //txtUser.DataContext = manage.Agents.ToList();
             manage = new PropertyManagementEntities();
 
             // Check if the entered username and password are valid
             string enteredUsername = txtUser.Text;
             string enteredPassword = txtPassword.Password;
 
-            var agent = manage.Agents.FirstOrDefault(a => a.UserName == enteredUsername && a.Password == enteredPassword);
+            var loggedAgent = manage.Agents.FirstOrDefault(a => a.UserName == enteredUsername && a.Password == enteredPassword);
 
-            if (agent != null)
+            if (loggedAgent != null)
             {
                 // Login successful
                 open = true;
 
-                // Open PropertyManagementWindow
-                PropertyManagement propertyManagement = new PropertyManagement();
+                // Open Property Management UI
+                PropertyManagement propertyManagement = new PropertyManagement(loggedAgent);
                 propertyManagement.Show();
 
                 // Close the current login window
@@ -66,6 +66,8 @@ namespace PropertyManagementApp
 
         private void txtUser_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
+            // btnOk.IsEnabled = !string.IsNullOrWhiteSpace(txtUser.Text) && !string.IsNullOrWhiteSpace(txtPassword.Password);
+
             if (txtUser.Text != null)
             {
                 btnOk.IsEnabled = true;
@@ -84,7 +86,7 @@ namespace PropertyManagementApp
         {
             if (open)
             {
-                // Confirmation pour quitter l'application
+                // Confirmation before colsing the app
                 if (MessageBox.Show("Continue to colse the app ?", "Attention !",
                     MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                 {
