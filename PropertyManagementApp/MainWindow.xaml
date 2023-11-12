@@ -38,23 +38,22 @@
 
         <Image Source="/Resources/key.png" Grid.Column="1" Grid.Row="0" Grid.RowSpan="6"/>
 
-        <Label Content="_Nom d’utilisateur :" Grid.Column="2" Grid.Row="1"
-               HorizontalAlignment="Center" Margin="0,14,0,20"
-               Target="{Binding ElementName=txtUtilisateur}" Grid.RowSpan="2"/>
-        <TextBox x:Name="txtUtilisateur" Grid.Column="2" Grid.Row="1"
-                 Width="150" Margin="107,18,0,0" VerticalAlignment="Top" TextChanged="txtUtilisateur_TextChanged" Grid.ColumnSpan="3" Grid.RowSpan="2"/>
+        <Label Content="_Username :" Grid.Column="2" Grid.Row="1"
+               HorizontalAlignment="Center" Margin="0,14,0,20" Grid.RowSpan="2"/>
+        <TextBox x:Name="txtUser" Grid.Column="2" Grid.Row="1"
+                 Width="150" Margin="107,18,0,0" VerticalAlignment="Top"  Grid.ColumnSpan="3" Grid.RowSpan="2"/>
 
-        <Label Content="_Mot de passe :" Grid.Column="2" Grid.Row="2"
-               HorizontalAlignment="Right" Margin="0,14,0,37"
-               Target="{Binding ElementName=txtMotPasse}" Grid.RowSpan="3"/>
-        <PasswordBox x:Name="txtMotPasse" Grid.Column="2" Grid.Row="2"
+        <Label Content="_Password :" Grid.Column="2" Grid.Row="2"
+               HorizontalAlignment="Right" Margin="0,14,0,37" Grid.RowSpan="3"/>
+        <PasswordBox x:Name="txtPassword" Grid.Column="2" Grid.Row="2"
                      Width="150" Margin="107,18,0,0" VerticalAlignment="Top" Password="" Grid.ColumnSpan="3" Grid.RowSpan="3"/>
 
         <WrapPanel Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="3" Margin="107,12,0,12">
             <Button x:Name="btnOk" Grid.Column="2" Grid.Row="4" Content="_OK"
-                Width="50" Margin="0,2" IsDefault="True" IsEnabled="False" Click="btnOk_Click"/>
-            <Button x:Name="btnAnnuler" Grid.Column="3" Grid.Row="4" Content="_Annuler"
-                Width="50" Margin="50,2,0,2" IsCancel="True" Click="btnAnnuler_Click"/>
+                Width="50" Margin="0,2" IsDefault="True" IsEnabled="False" />
+            
+            <Button x:Name="btnCancel" Grid.Column="3" Grid.Row="4" Content="_Cancel"
+                Width="50" Margin="50,2,0,2" IsCancel="True" />
         </WrapPanel>
 
     </Grid>
