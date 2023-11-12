@@ -64,10 +64,21 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Agent.cs">
+      <DependentUpon>PropertyManagement.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Property.cs">
+      <DependentUpon>PropertyManagement.tt</DependentUpon>
+    </Compile>
     <Compile Include="PropertyManagement.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>PropertyManagement.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PropertyManagement.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PropertyManagement.tt</DependentUpon>
     </Compile>
     <Compile Include="PropertyManagement.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -135,6 +146,12 @@
     <Content Include="PropertyManagement.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>PropertyManagement.Context.cs</LastGenOutput>
+      <DependentUpon>PropertyManagement.edmx</DependentUpon>
+    </Content>
+    <Content Include="PropertyManagement.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PropertyManagement.edmx</DependentUpon>
+      <LastGenOutput>PropertyManagement.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>
