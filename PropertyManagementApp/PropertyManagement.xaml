@@ -58,7 +58,7 @@
                     <Label Content="Price :" Grid.Column="1" Grid.Row="7" HorizontalAlignment="Right" FontSize="11"/>
                     <TextBox x:Name="txtPrice" Grid.Column="2" Grid.Row="7" Margin="0,2,0,0" FontSize="11" BorderBrush="Gray"/>
 
-                    <Button x:Name="btnAdd" Content="_Add" Grid.Column="1" Grid.Row="11"  Margin="0,6,0,-22"  />
+                    <Button x:Name="btnAdd" Content="_Add" Grid.Column="1" Grid.Row="11"  Margin="0,6,0,-22" Click="btnAdd_Click"  />
                     <Button x:Name="btnDelete" Content="_Delete" Grid.Column="2" Grid.Row="11" Grid.ColumnSpan="1" Margin="23,6,2,-22"  />
                     <Button x:Name="btnChange" Content="_Change" Grid.Column="3" Grid.Row="11" Grid.ColumnSpan="1" Margin="20,6,88,-22"  />
 

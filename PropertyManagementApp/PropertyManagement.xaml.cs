@@ -59,5 +59,50 @@ namespace PropertyManagementApp
                 rbRent.IsChecked = selectedProperty.ListingStatus == 2;
             }
         }
+
+        private void btnAdd_Click(object sender, RoutedEventArgs e)
+        {
+            // Check if the textboxes are not empty
+            if (!string.IsNullOrWhiteSpace(txtID.Text) && !string.IsNullOrWhiteSpace(txtName.Text) && !string.IsNullOrWhiteSpace(txtAdress.Text) && 
+                !string.IsNullOrWhiteSpace(txtPrice.Text))
+            {
+                // Create a new Property object with the entered information
+                Property newProperty = new Property
+                {
+                    PropertyID = int.Parse(txtID.Text),
+                    Name = txtName.Text,
+                    Address = txtAdress.Text,
+                    Price = int.Parse(txtPrice.Text),
+                    ListingStatus = 1,
+                    AgentID = loggedAgent.AgentID,
+                };
+
+                // Add the new property to the database
+                manage.Properties.Add(newProperty);
+                manage.SaveChanges();
+
+                // Optionally, refresh the combobox to show the newly added property
+                //cboPropertyList.ItemsSource = manage.Properties.ToList();
+                cboPropertyList.ItemsSource = manage.Properties.Where(p => p.AgentID == loggedAgent.AgentID).ToList();
+
+
+                ClearFeilds();
+            }
+            else
+            {
+                MessageBox.Show("Please fill in all the required information.", "Incomplete Information", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+        }
+
+        private void ClearFeilds()
+        {
+            txtID.Clear();
+            txtName.Clear();
+            txtAdress.Clear();
+            txtPrice.Clear();
+            rbSold.IsChecked = false;
+            rbSale.IsChecked = false;
+            rbRent.IsChecked = false;
+        }
     }
 }
