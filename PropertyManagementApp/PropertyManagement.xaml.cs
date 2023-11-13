@@ -67,7 +67,7 @@ namespace PropertyManagementApp
                 !string.IsNullOrWhiteSpace(txtPrice.Text))
             {
                 // Create a new Property object with the entered information
-                Property newProperty = new Property
+                Property addedProperty = new Property
                 {
                     PropertyID = int.Parse(txtID.Text),
                     Name = txtName.Text,
@@ -78,7 +78,7 @@ namespace PropertyManagementApp
                 };
 
                 // Add the new property to the database
-                manage.Properties.Add(newProperty);
+                manage.Properties.Add(addedProperty);
                 manage.SaveChanges();
 
                 // Refresh the list of properties to show the newly added property
@@ -105,18 +105,20 @@ namespace PropertyManagementApp
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
-            // Check if an item is selected
+            // Check if a property is selected
             if(cboPropertyList.SelectedItem != null)
             {
                 // Get the selected property
-                Property selectedProperty = (Property)cboPropertyList.SelectedItem;
+                Property deletedProperty = (Property)cboPropertyList.SelectedItem;
 
                 // Remove property from database
-                manage.Properties.Remove(selectedProperty);
+                manage.Properties.Remove(deletedProperty);
                 manage.SaveChanges();
 
                 // Refresh the list of properties to show the newly added property
                 cboPropertyList.ItemsSource = manage.Properties.Where(p => p.AgentID == loggedAgent.AgentID).ToList();
+
+                ClearFeilds();
             }
             else
             {
@@ -124,7 +126,52 @@ namespace PropertyManagementApp
             }
         }
 
+        private void btnChange_Click(object sender, RoutedEventArgs e)
+        {
+            // Check if a property is selected
+            if (cboPropertyList.SelectedItem != null)
+            {
+                Property updatedProperty = (Property)cboPropertyList.SelectedItem;
+                // Update the property
+             
+                updatedProperty.PropertyID = int.Parse(txtID.Text);
+                updatedProperty.Name = txtName.Text;
+                updatedProperty.Address = txtAdress.Text;
+                updatedProperty.Price = int.Parse(txtPrice.Text);
+
+                switch (updatedProperty.ListingStatus)
+                {
+                    case -1:
+                        rbSold.IsChecked = false;
+                        rbSale.IsChecked = false;
+                        rbRent.IsChecked = false;
+                        break;
+                    case 0:
+                        rbSold.IsChecked = true;
+                        break;
+                    case 1:
+                        rbSale.IsChecked = true;
+                        break;
+                    case 2:
+                        rbRent.IsChecked = true;
+                        break;
+                }
 
 
+
+                // Save changes to the database
+                manage.SaveChanges();
+
+                // Refresh the list of properties to show the newly added property
+                cboPropertyList.ItemsSource = manage.Properties.Where(p => p.AgentID == loggedAgent.AgentID).ToList();
+
+                ClearFeilds();
+            }
+            else
+            {
+                MessageBox.Show("Please fill in all the required information.", "Incomplete Information", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+
+        }
     }
 }

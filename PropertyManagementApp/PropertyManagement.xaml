@@ -60,13 +60,13 @@
 
                     <Button x:Name="btnAdd" Content="_Add" Grid.Column="1" Grid.Row="11"  Margin="0,6,0,-22" Click="btnAdd_Click"  />
                     <Button x:Name="btnDelete" Content="_Delete" Grid.Column="2" Grid.Row="11" Grid.ColumnSpan="1" Margin="23,6,2,-22" Click="btnDelete_Click"  />
-                    <Button x:Name="btnChange" Content="_Change" Grid.Column="3" Grid.Row="11" Grid.ColumnSpan="1" Margin="20,6,88,-22"  />
+                    <Button x:Name="btnChange" Content="_Change" Grid.Column="3" Grid.Row="11" Grid.ColumnSpan="1" Margin="20,6,88,-22" Click="btnChange_Click"  />
 
                     <GroupBox Header="Status" Grid.Column="3" Grid.Row="3" Grid.RowSpan="4" Margin="10,0,50,0">
                         <StackPanel Orientation="Vertical" Grid.ColumnSpan="2">
-                            <RadioButton x:Name="rbSold" Margin="5" FontSize="11">Sold</RadioButton>
-                            <RadioButton x:Name="rbSale" Margin="5" FontSize="11">For Sale</RadioButton>
-                            <RadioButton x:Name="rbRent" Margin="5" FontSize="11">For Rent</RadioButton>
+                            <RadioButton x:Name="rbSold" Margin="5" FontSize="11" IsChecked="{Binding IsSold, Mode=TwoWay}">Sold</RadioButton>
+                            <RadioButton x:Name="rbSale" Margin="5" FontSize="11" IsChecked="{Binding IsForSale, Mode=TwoWay}">For Sale</RadioButton>
+                            <RadioButton x:Name="rbRent" Margin="5" FontSize="11" IsChecked="{Binding IsForRent, Mode=TwoWay}">For Rent</RadioButton>
                         </StackPanel>
                     </GroupBox>
                 </Grid>
