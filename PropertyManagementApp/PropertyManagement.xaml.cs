@@ -81,10 +81,8 @@ namespace PropertyManagementApp
                 manage.Properties.Add(newProperty);
                 manage.SaveChanges();
 
-                // Optionally, refresh the combobox to show the newly added property
-                //cboPropertyList.ItemsSource = manage.Properties.ToList();
+                // Refresh the list of properties to show the newly added property
                 cboPropertyList.ItemsSource = manage.Properties.Where(p => p.AgentID == loggedAgent.AgentID).ToList();
-
 
                 ClearFeilds();
             }
@@ -104,5 +102,29 @@ namespace PropertyManagementApp
             rbSale.IsChecked = false;
             rbRent.IsChecked = false;
         }
+
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            // Check if an item is selected
+            if(cboPropertyList.SelectedItem != null)
+            {
+                // Get the selected property
+                Property selectedProperty = (Property)cboPropertyList.SelectedItem;
+
+                // Remove property from database
+                manage.Properties.Remove(selectedProperty);
+                manage.SaveChanges();
+
+                // Refresh the list of properties to show the newly added property
+                cboPropertyList.ItemsSource = manage.Properties.Where(p => p.AgentID == loggedAgent.AgentID).ToList();
+            }
+            else
+            {
+                MessageBox.Show("Please select a property to delete.", "No Property Selected", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+        }
+
+
+
     }
 }
