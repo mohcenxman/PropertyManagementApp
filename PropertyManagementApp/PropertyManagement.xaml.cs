@@ -157,8 +157,6 @@ namespace PropertyManagementApp
                         break;
                 }
 
-
-
                 // Save changes to the database
                 manage.SaveChanges();
 
@@ -171,7 +169,22 @@ namespace PropertyManagementApp
             {
                 MessageBox.Show("Please fill in all the required information.", "Incomplete Information", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
+        }
 
+        // Disconnect actif user and back to login page
+        private void Disconnect_Click(object sender, RoutedEventArgs e)
+        {
+            // Show the MainWindow
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+
+            this.Close();
+        }
+
+        // Closing the app
+        private void Close_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -56,7 +56,6 @@ namespace PropertyManagementApp
                 // Invalid username or password
                 MessageBox.Show("Invalid username or password. Please try again.", "Login Failed", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)

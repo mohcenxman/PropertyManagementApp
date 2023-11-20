@@ -5,15 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PropertyManagementApp"
         mc:Ignorable="d"
-        Title="PropertyManagement" Height="450" Width="800" Loaded="Window_Loaded">
+        Title="Property Management" Height="450" Width="800" Loaded="Window_Loaded">
     <Grid>
 
         <Menu DockPanel.Dock="Top">
-            <MenuItem Header="_Fichier">
-                <MenuItem Header="_Quitter" x:Name="Quitter" />
-            </MenuItem>
-            <MenuItem Header="_Ajouter">
-                <MenuItem Header="É_tudiant" x:Name="AjoutEtudiant"  />
+            <MenuItem Header="_Menu">
+                <MenuItem Header="_Disconnect" x:Name="Disconnect" Click="Disconnect_Click" />
+                <MenuItem Header="_Cloce" x:Name="Close" Click="Close_Click" />
             </MenuItem>
         </Menu>
 
@@ -71,24 +69,7 @@
                     </GroupBox>
                 </Grid>
             </TabItem>
-            <TabItem Header="Cours">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="5"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="5"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="5"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="5"/>
-                    </Grid.RowDefinitions>
-                    <Label x:Name="lblCours" Grid.Row="1" Grid.Column="1" Height="auto" Margin="15,5,15,5"/>
-                    <DataGrid x:Name="lstCours" Grid.Row="2" Grid.Column="1" Margin="5" ScrollViewer.CanContentScroll="True" 
-                              ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto" Height="190"/>
-                </Grid>
-            </TabItem>
+           
         </TabControl>
 
     </Grid>
